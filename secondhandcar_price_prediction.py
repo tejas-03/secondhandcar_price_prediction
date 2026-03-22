@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+# Load model (file name must match GitHub exactly)
 model = joblib.load("secondhandcar_price_predictio.pkl")
 
 st.title("Second Hand Car Price Prediction")
@@ -30,6 +31,7 @@ input_data = pd.DataFrame({
     'torque':[torque]
 })
 
+# Match model feature order
 input_data = input_data.reindex(columns=model.feature_names_in_)
 
 if st.button("Predict Price"):
