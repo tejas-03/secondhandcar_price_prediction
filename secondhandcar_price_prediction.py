@@ -30,8 +30,7 @@ input_data = pd.DataFrame({
     'torque':[torque]
 })
 
-# Match training feature order
-input_data = input_data[model.feature_names_in_]
+input_data = input_data.reindex(columns=model.feature_names_in_)
 
 if st.button("Predict Price"):
     prediction = model.predict(input_data)
